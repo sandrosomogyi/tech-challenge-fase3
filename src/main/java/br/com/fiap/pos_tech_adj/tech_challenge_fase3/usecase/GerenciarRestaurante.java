@@ -1,5 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Restaurante;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,14 @@ public class GerenciarRestaurante {
     }
 
     // Método para buscar todos os restaurantes por Tipo de Cozinha
-    public List<Restaurante> buscarTipoDeCozinha(String tipoDeCozinha) {
-        return restauranteRepository.findByTipoDeCozinha(tipoDeCozinha);
+    public List<Restaurante> buscarTipoCozinha(String tipoCozinha) {
+        return restauranteRepository.findByTipoCozinha(tipoCozinha);
     }
 
     // Método para buscar um restaurante por ID
     public Restaurante buscarPorId(String id) {
         return restauranteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Restaurante com ID " + id + " não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Restaurante com ID " + id + " não encontrado."));
     }
 
     public Restaurante atualizar(String id, Restaurante restaurante) {
@@ -38,17 +39,16 @@ public class GerenciarRestaurante {
                 .map(r -> {
                     r.setNome(restaurante.getNome());
                     r.setLocalizacao(restaurante.getLocalizacao());
-                    r.setTipoDeCozinha(restaurante.getTipoDeCozinha());
-                    r.setHorarioDeFuncionamento(restaurante.getHorarioDeFuncionamento());
+                    r.setTipoCozinha(restaurante.getTipoCozinha());
                     r.setCapacidade(restaurante.getCapacidade());
                     return restauranteRepository.save(r);
                 })
-                .orElseThrow(() -> new IllegalArgumentException("Restaurante não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Restaurante não encontrado."));
     }
 
     public void excluir(String id) {
         Restaurante restaurante = restauranteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Restaurante não encontrado"));
+                .orElseThrow(() -> new ControllerNotFoundException("Restaurante não encontrado"));
 
         restauranteRepository.deleteById(id);
     }

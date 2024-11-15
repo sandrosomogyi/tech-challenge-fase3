@@ -9,7 +9,7 @@ public interface RestauranteRepository {
     Optional<Restaurante> findById(String id);
     List<Restaurante> findAll();
     List<Restaurante> findByLocalizacao(String localizacao);
-    List<Restaurante> findByTipoDeCozinha(String tipoDeCozinha);
+    List<Restaurante> findByTipoCozinha(String tipoCozinha);
     Restaurante save(Restaurante restaurante);
     void deleteById(String id);
 }

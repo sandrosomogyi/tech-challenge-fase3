@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PessoaMongoRepository extends MongoRepository<Pessoa, String>, PessoaRepository {
+public interface MongoPessoaRepository extends MongoRepository<Pessoa, String>, PessoaRepository {
 
     @Override
     Optional<Pessoa> findByEmail(String email);

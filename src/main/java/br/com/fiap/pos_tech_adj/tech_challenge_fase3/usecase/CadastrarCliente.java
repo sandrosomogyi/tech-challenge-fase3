@@ -1,5 +1,7 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerMessagingException;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Cliente;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.ClienteRepository;
@@ -22,13 +24,13 @@ public class CadastrarCliente {
     public Cliente execute(String pessoaId) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(pessoaId);
         if (pessoaOptional.isEmpty()) {
-            throw new IllegalArgumentException("Pessoa não encontrada.");
+            throw new ControllerNotFoundException("Pessoa não encontrada.");
         }
 
         Pessoa pessoa = pessoaOptional.get();
 
         if (clienteRepository.findByPessoaId(pessoaId).isPresent()) {
-            throw new IllegalArgumentException("Já existe um cliente associado a essa pessoa.");
+            throw new ControllerMessagingException("Já existe um cliente associado a essa pessoa.");
         }
 
         Cliente cliente = new Cliente();

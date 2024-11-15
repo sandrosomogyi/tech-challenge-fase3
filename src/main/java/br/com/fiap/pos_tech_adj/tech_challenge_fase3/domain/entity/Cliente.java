@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -20,7 +21,10 @@ public class Cliente {
     private String id;
 
     @DBRef
-    private List<Reserva> reservas;
+    private List<Reserva> reservas = new ArrayList<>(); // Inicializa a lista vazia
+
+    @DBRef
+    private List<Avaliacao> avaliacoes = new ArrayList<>(); // Inicializa a lista vazia
 
     @DBRef
     @Indexed(unique = true)  // Definindo o campo `pessoa` como único na base de dados

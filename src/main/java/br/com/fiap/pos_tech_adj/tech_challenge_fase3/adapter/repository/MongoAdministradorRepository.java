@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AdministradorMongoRepository extends MongoRepository<Administrador, String>, AdministradorRepository {
+public interface MongoAdministradorRepository extends MongoRepository<Administrador, String>, AdministradorRepository {
 
     @Override
     Optional<Administrador> findByPessoaId(String pessoaId);

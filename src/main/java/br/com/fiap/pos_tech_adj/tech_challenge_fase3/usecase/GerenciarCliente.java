@@ -1,5 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Cliente;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.ClienteRepository;
@@ -29,19 +30,19 @@ public class GerenciarCliente {
                     existingClient.setReservas(cliente.getReservas());
                     return clienteRepository.save(existingClient);
                 })
-                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Cliente não encontrado."));
     }
 
     public void excluir(String id) {
         Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Cliente não encontrado."));
 
         clienteRepository.deleteById(id);
     }
 
     public Cliente buscarPorId(String id) {
         return clienteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Cliente não encontrado."));
     }
 
     public List<Cliente> buscarTodos() {

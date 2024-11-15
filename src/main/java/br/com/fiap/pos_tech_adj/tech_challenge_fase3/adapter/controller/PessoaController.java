@@ -3,14 +3,14 @@ package br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase.CadastrarPessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase.GerenciarPessoa;
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase.GerenciarReserva;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/api/pessoas")
 public class PessoaController {
 
     private final CadastrarPessoa cadastrarPessoa;

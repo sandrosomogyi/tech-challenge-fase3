@@ -37,9 +37,9 @@ public class RestauranteController {
     }
 
     // Endpoint adicional para listar todos os restaurantes por Tipo de Cozinha
-    @GetMapping("/{tipoDeCozinha}")
-    public ResponseEntity<List<Restaurante>> listarRestaurantesByTipoDeCozinha(@PathVariable String tipoDeCozinha) {
-        List<Restaurante> restaurantes = gerenciarRestaurante.buscarTipoDeCozinha(tipoDeCozinha);
+    @GetMapping("/{tipoCozinha}")
+    public ResponseEntity<List<Restaurante>> listarRestaurantesByTipoCozinha(@PathVariable String tipoCozinha) {
+        List<Restaurante> restaurantes = gerenciarRestaurante.buscarTipoCozinha(tipoCozinha);
         return ResponseEntity.ok(restaurantes);
     }
 

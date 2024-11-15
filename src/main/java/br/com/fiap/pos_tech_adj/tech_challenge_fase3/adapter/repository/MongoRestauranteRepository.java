@@ -12,6 +12,6 @@ import java.util.List;
 public interface MongoRestauranteRepository extends MongoRepository<Restaurante, String>, RestauranteRepository {
 
     List<Restaurante> findByLocalizacao(String localizacao);
-    List<Restaurante> findByTipoDeCozinha(String tipoDeCozinha);
+    List<Restaurante> findByTipoCozinha(String tipoCozinha);
 
 }

@@ -1,5 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +33,19 @@ public class GerenciarPessoa {
                     p.setSenha(pessoa.getSenha());
                     return pessoaRepository.save(p);
                 })
-                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
+                .orElseThrow(() -> new ControllerNotFoundException("Pessoa não encontrada."));
     }
 
     public void excluir(String id) {
         Pessoa pessoa = pessoaRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
+                .orElseThrow(() -> new ControllerNotFoundException("Pessoa não encontrada."));
 
         pessoaRepository.deleteById(id);
     }
 
     public Pessoa buscarPorId(String id) {
         return pessoaRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
+                .orElseThrow(() -> new ControllerNotFoundException("Pessoa não encontrada."));
     }
 
     public List<Pessoa> buscarTodos() {

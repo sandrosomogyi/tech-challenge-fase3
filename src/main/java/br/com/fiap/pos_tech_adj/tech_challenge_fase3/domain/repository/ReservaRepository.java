@@ -11,7 +11,7 @@ public interface ReservaRepository {
     List<Reserva> findAll();
     List<Reserva> findByRestauranteId(String restauranteId);
     List<Reserva> findByClienteId(String clienteId);
-    List<Reserva> findByDataHoraReserva(LocalDateTime dataHoraReserva);
+    List<Reserva> findByDataHoraReservaBetween(LocalDateTime start, LocalDateTime end);
     Reserva save(Reserva reserva);
     void deleteById(String id);
 }

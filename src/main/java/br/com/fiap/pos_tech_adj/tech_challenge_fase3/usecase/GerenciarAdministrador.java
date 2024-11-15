@@ -1,5 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Administrador;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.AdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +25,19 @@ public class GerenciarAdministrador {
                     existingAdmin.setRestaurantes(administrador.getRestaurantes());
                     return administradorRepository.save(existingAdmin);
                 })
-                .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Administrador não encontrado."));
     }
 
     public void excluir(String id) {
         Administrador administrador = administradorRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Administrador não encontrado."));
 
         administradorRepository.deleteById(id);
     }
 
     public Administrador buscarPorId(String id) {
         return administradorRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Administrador não encontrado."));
+                .orElseThrow(() -> new ControllerNotFoundException("Administrador não encontrado."));
     }
 
     public List<Administrador> buscarTodos() {

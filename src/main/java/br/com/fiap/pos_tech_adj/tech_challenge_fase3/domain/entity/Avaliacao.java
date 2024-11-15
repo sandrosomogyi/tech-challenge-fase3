@@ -18,12 +18,12 @@ public class Avaliacao {
     @DBRef
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
-    private Restaurante restauranteId;
+    private Restaurante restaurante;
 
     @DBRef
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
-    private Cliente clienteId;
+    private Cliente cliente;
 
     private int nota;
     private String comentario;
