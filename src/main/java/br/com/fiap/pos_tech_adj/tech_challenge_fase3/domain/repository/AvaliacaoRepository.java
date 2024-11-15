@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AvaliacaoRepository {
+    List<Avaliacao> findAll();
     Optional<Avaliacao> findById(String id);
     List<Avaliacao> findByRestauranteId(String restauranteId);
     List<Avaliacao> findByClienteId(String clienteId);

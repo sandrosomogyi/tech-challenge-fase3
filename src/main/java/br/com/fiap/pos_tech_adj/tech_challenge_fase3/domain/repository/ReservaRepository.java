@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface ReservaRepository {
     Optional<Reserva> findById(String id);
+    List<Reserva> findAll();
     List<Reserva> findByRestauranteId(String restauranteId);
     List<Reserva> findByClienteId(String clienteId);
     List<Reserva> findByDataHoraReserva(LocalDateTime dataHoraReserva);
