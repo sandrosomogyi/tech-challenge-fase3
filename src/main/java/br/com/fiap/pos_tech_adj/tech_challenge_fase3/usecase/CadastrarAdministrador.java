@@ -2,8 +2,8 @@ package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerMessagingException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Administrador;
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Administrador;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Pessoa;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.AdministradorRepository;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.PessoaRepository;
 import org.springframework.stereotype.Service;

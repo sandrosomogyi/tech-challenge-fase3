@@ -1,6 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository;
 
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Pessoa;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Pessoa;
 import java.util.Optional;
 import java.util.List;
 

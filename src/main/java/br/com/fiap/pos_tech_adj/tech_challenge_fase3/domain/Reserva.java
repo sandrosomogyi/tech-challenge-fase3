@@ -1,4 +1,4 @@
-package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity;
+package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
@@ -8,9 +8,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Data
-@Document(collection = "avaliacoes")
-public class Avaliacao {
+@Document(collection = "reservas")
+public class Reserva {
 
     @Id
     private String id;
@@ -25,6 +27,6 @@ public class Avaliacao {
     @JsonIdentityReference(alwaysAsId = true)
     private Cliente cliente;
 
-    private int nota;
-    private String comentario;
+    private LocalDateTime dataHoraReserva;
+    private int numeroDePessoas;
 }

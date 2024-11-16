@@ -1,6 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller;
 
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Avaliacao;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Avaliacao;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase.AdicionarAvaliacao;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase.GerenciarAvaliacao;
 import org.springframework.beans.factory.annotation.Autowired;

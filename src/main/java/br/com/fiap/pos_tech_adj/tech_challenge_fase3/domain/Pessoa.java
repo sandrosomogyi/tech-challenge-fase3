@@ -1,4 +1,4 @@
-package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity;
+package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

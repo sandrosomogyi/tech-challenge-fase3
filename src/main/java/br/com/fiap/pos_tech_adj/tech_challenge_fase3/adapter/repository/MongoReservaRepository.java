@@ -1,6 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.repository;
 
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Reserva;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Reserva;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.ReservaRepository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

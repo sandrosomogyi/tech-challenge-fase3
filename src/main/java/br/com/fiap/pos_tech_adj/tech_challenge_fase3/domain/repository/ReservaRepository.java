@@ -1,6 +1,6 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository;
 
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Reserva;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Reserva;
 
 import java.time.LocalDateTime;
 import java.util.List;
