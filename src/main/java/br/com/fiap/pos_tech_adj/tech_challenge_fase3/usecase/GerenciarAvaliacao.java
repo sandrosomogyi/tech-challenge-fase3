@@ -1,7 +1,7 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Avaliacao;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Avaliacao;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.AvaliacaoRepository;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.ClienteRepository;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.RestauranteRepository;

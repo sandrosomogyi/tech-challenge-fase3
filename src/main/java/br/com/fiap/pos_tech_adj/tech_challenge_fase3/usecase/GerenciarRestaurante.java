@@ -1,7 +1,7 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Restaurante;
+import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Restaurante;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

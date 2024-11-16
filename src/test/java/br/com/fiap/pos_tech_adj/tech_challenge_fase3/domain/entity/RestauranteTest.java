@@ -1,6 +1,5 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity;
 
-import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.Restaurante;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

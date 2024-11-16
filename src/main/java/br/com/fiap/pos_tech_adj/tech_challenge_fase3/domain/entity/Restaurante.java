@@ -1,15 +1,15 @@
-package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain;
-
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Data;
+
 @Data
 @Document(collection = "restaurantes")
-
 public class Restaurante {
 
     @Id
