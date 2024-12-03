@@ -37,6 +37,8 @@ class RestauranteTest {
         assertEquals("Rua Atualizada", restaurante.getLocalizacao());
         assertEquals("Francesa", restaurante.getTipoCozinha());
         assertEquals(100, restaurante.getCapacidade());
+
     }
+
 
 }
