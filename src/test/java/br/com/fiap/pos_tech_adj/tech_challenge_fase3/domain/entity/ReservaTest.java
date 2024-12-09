@@ -53,6 +53,4 @@ class ReservaTest {
         assertEquals(LocalDateTime.of(2024, 12, 25, 20, 0), reserva.getDataHoraReserva());
         assertEquals(4, reserva.getNumeroDePessoas());
     }
-
 }
-
