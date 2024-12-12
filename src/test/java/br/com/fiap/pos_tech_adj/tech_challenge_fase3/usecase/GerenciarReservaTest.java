@@ -1,6 +1,5 @@
 package br.com.fiap.pos_tech_adj.tech_challenge_fase3.usecase;
 
-
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.adapter.controller.exception.ControllerNotFoundException;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Cliente;
 import br.com.fiap.pos_tech_adj.tech_challenge_fase3.domain.entity.Reserva;
@@ -15,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -67,6 +67,7 @@ class GerenciarReservaTest {
         verify(reservaRepository, times(1)).save(reserva);
     }
 
+
     @Test
     void deveLancarExcecaoAoAtualizarReservaQueNaoExiste() {
         // Arrange
@@ -84,6 +85,27 @@ class GerenciarReservaTest {
                 .isInstanceOf(ControllerNotFoundException.class)
                 .hasMessage("Reserva não encontrada.");
     }
+
+    @Test
+    void deveExcluirReservaComSucesso() {
+        // Arrange
+        cliente.setReservas(new ArrayList<>());  // Certifique-se de que a lista de reservas está inicializada
+        cliente.getReservas().add(reserva);  // Adicionando a reserva para o cliente
+
+        when(reservaRepository.findById("1")).thenReturn(Optional.of(reserva));
+        when(clienteRepository.findById(cliente.getId())).thenReturn(Optional.of(cliente));
+
+        // Act
+        gerenciarReserva.excluir("1");
+
+        // Assert
+        verify(reservaRepository, times(1)).deleteById("1");
+        verify(clienteRepository, times(1)).save(cliente);  // Verifica se o cliente teve suas reservas atualizadas
+
+        // Verifica que a reserva foi removida da lista de reservas do cliente
+        assertThat(cliente.getReservas()).isEmpty();
+    }
+
 
     @Test
     void deveLancarExcecaoAoExcluirReservaQueNaoExiste() {
@@ -120,5 +142,20 @@ class GerenciarReservaTest {
                 .isInstanceOf(ControllerNotFoundException.class)
                 .hasMessage("Reserva não encontrada.");
     }
-}
 
+    @Test
+    void deveBuscarTodasAsReservas() {
+        // Arrange
+        List<Reserva> reservas = new ArrayList<>();
+        reservas.add(reserva);
+        when(reservaRepository.findAll()).thenReturn(reservas);
+
+        // Act
+        List<Reserva> reservasEncontradas = gerenciarReserva.buscarTodos();
+
+        // Assert
+        assertThat(reservasEncontradas).isNotNull();
+        assertThat(reservasEncontradas.size()).isEqualTo(1);
+        verify(reservaRepository, times(1)).findAll();
+    }
+}

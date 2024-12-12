@@ -58,7 +58,7 @@ class PessoaRepositoryTest {
         when(pessoaRepository.save(pessoa)).thenReturn(pessoa);
         Pessoa updatedPessoa = pessoaRepository.save(pessoa);
         assertEquals("Updated Name", updatedPessoa.getNome());
-        verify(pessoaRepository, times(1)).save(pessoa); // Verifica se save foi chamado uma vez
+        verify(pessoaRepository, times(1)).save(pessoa);
     }
 
     @Test
@@ -66,6 +66,6 @@ class PessoaRepositoryTest {
 
         doNothing().when(pessoaRepository).deleteById(pessoa.getCpf());
         pessoaRepository.deleteById(pessoa.getCpf());
-        verify(pessoaRepository, times(1)).deleteById(pessoa.getCpf()); // Verifica se deleteById foi chamado uma vez
+        verify(pessoaRepository, times(1)).deleteById(pessoa.getCpf());
     }
 }
