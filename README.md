@@ -11,3 +11,17 @@ Para rodar os testes do projeto, siga os seguintes passos:
 
 ```bash
 mvn test
+
+```
+
+### Relatório Allure
+```bash
+allure open target/allure-report
+
+```
+
+### 
+```bash
+allure serve target/allure-results
+
+```
