@@ -18,6 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -66,5 +69,52 @@ public class AvaliacaoControllerIntegrationTest {
                 .andExpect(jsonPath("$.id").value(avaliacao.getId()))
                 .andExpect(jsonPath("$.cliente").value(cliente.getId()))
                 .andExpect(jsonPath("$.restaurante").value(restaurante.getId()));
+    }
+
+    @Test
+    public void testAdicionarAvaliacao() throws Exception {
+        Restaurante newRestaurante =
+                new Restaurante(UUID.randomUUID().toString(),"teste", "Rua teste", "Vegana", 100);
+        restauranteRepository.save(newRestaurante);
+
+        String novaAvaliacaoJson = String.format(
+                "{\"nota\": 5, \"comentario\": \"Excelente!\", \"cliente\": {\"id\": \"%s\"}, \"restaurante\": {\"id\": \"%s\"}}",
+                cliente.getId(), newRestaurante.getId());
+
+        mockMvc.perform(post("/api/avaliacoes")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(novaAvaliacaoJson))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.nota").value(5))
+                .andExpect(jsonPath("$.comentario").value("Excelente!"))
+                .andExpect(jsonPath("$.cliente").value(cliente.getId()))
+                .andExpect(jsonPath("$.restaurante").value(newRestaurante.getId()));
+    }
+
+    @Test
+    public void testAtualizarAvaliacao() throws Exception {
+        String avaliacaoAtualizadaJson = String.format(
+                "{\"nota\": 4, \"comentario\": \"Muito bom!\", \"cliente\": {\"id\": \"%s\"}, \"restaurante\": {\"id\": \"%s\"}}",
+                cliente.getId(), restaurante.getId());
+
+        mockMvc.perform(put("/api/avaliacoes/{id}", avaliacao.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(avaliacaoAtualizadaJson))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nota").value(4))
+                .andExpect(jsonPath("$.comentario").value("Muito bom!"))
+                .andExpect(jsonPath("$.cliente").value(cliente.getId()))
+                .andExpect(jsonPath("$.restaurante").value(restaurante.getId()));
+    }
+
+    @Test
+    public void testExcluirAvaliacao() throws Exception {
+        mockMvc.perform(delete("/api/avaliacoes/{id}", avaliacao.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/api/avaliacoes/{id}", avaliacao.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }

@@ -33,7 +33,7 @@ public class GerenciarAvaliacao {
                 })
                 .orElseThrow(() -> new ControllerNotFoundException("Avaliação não encontrada."));
 
-        var restaurante = restauranteRepository.findById(avaliacao.getCliente().getId());
+        var restaurante = restauranteRepository.findById(avaliacao.getRestaurante().getId());
         restaurante.get().getAvaliacoes().removeIf( x -> x.getRestaurante().getId().equals(avaliacao.getRestaurante().getId()));
         restaurante.get().getAvaliacoes().add(avaliacaoSaved);
         restauranteRepository.save(restaurante.get());
@@ -50,7 +50,7 @@ public class GerenciarAvaliacao {
         Avaliacao avaliacao = avaliacaoRepository.findById(id)
                     .orElseThrow(() -> new ControllerNotFoundException("Avaliação não encontrada"));
 
-        var restaurante = restauranteRepository.findById(avaliacao.getCliente().getId());
+        var restaurante = restauranteRepository.findById(avaliacao.getRestaurante().getId());
         restaurante.get().getAvaliacoes().removeIf( x -> x.getRestaurante().getId().equals(avaliacao.getRestaurante().getId()));
         restauranteRepository.save(restaurante.get());
 
